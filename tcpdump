@@ -1,0 +1,65 @@
+Basic Capture Options
+
+Switch Command	Result
+D	Will display any interfaces available to capture from.
+i	Selects an interface to capture from. ex. -i eth0
+n	Do not resolve hostnames.
+nn	Do not resolve hostnames or well-known ports.
+e	Will grab the ethernet header along with upper-layer data.
+X	Show Contents of packets in hex and ASCII.
+XX	Same as X, but will also specify ethernet headers. (like using Xe)
+v, vv, vvv	Increase the verbosity of output shown and saved.
+c	Grab a specific number of packets, then quit the program.
+s	Defines how much of a packet to grab.
+S	change relative sequence numbers in the capture display to absolute sequence numbers. (13248765839 instead of 101)
+q	Print less protocol information.
+r file.pcap	Read from a file.
+w file.pcap	Write into a file
+
+
+
+			Save our PCAP Output to a File
+sudo tcpdump -i eth0 -w ~/output.pcap
+
+			Reading Output From a File
+sudo tcpdump -r ~/output.pcap
+
+
+
+
+Which tcpdump switch is used to show us all possible interfaces we can listen to?
+
+tcpdump -D
+
+tcpdump -i [interface name or #]
+
+
+
+Disable name resolution and display relative sequence numbers for another challenge.
+
+TONYNGENO@htb[/htb]$ tcpdump -i [interface name or #] -vX
+
+
+
+Save a Capture to a .PCAP file.
+
+tcpdump -i [interface name or #] -nvw [/path/of/filename.pcap]
+tcp -i eth0 -w ~/name-of-file
+
+
+Read the Capture from a .PCAP file.pcap
+
+tcpdump -nnSXr [file/to/read.pcap]
+
+
+tcpdump -r ~/name-of-file.pcap
+
+
+What TCPDump switch will allow us to pipe the contents of a pcap file out to another function such as 'grep'?
+
+-l
+
+
+ If we wished to filter out ICMP traffic from our capture, what filter could we use? ( word only, not symbol please.)
+
+not icmp
